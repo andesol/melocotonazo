@@ -1,0 +1,103 @@
+---
+tagline: Los 40 principales pero bien
+footerText: Made with visible confussion by
+sectionTitle: Últimos melocotonazos
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>{{meta.title}}</title>
+  </head>
+  <body>
+    <header class="header">
+      <h1>
+        <svg
+          class="logo"
+          width="546"
+          height="88"
+          viewBox="0 0 546 88"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M101 59.5V28H110V32.5H114.5V37H119V32.5H123.5V28H132.5V59.5H123.5V41.5H119V50.5H114.5V41.5H110V59.5H101ZM141.5 59.5V55H137V41.5H141.5V37H164V41.5H168.5V50.5H146V55H164V59.5H141.5ZM146 46H159.5V41.5H146V46ZM177.5 59.5V55H186.5V32.5H182V28H195.5V55H204.5V59.5H177.5ZM213.5 59.5V55H209V41.5H213.5V37H236V41.5H240.5V55H236V59.5H213.5ZM218 55H231.5V41.5H218V55ZM249.5 59.5V55H245V41.5H249.5V37H276.5V41.5H254V55H276.5V59.5H249.5ZM285.5 59.5V55H281V41.5H285.5V37H308V41.5H312.5V55H308V59.5H285.5ZM290 55H303.5V41.5H290V55ZM330.5 59.5V41.5H321.5V37H330.5V28H339.5V37H348.5V41.5H339.5V59.5H330.5ZM357.5 59.5V55H353V41.5H357.5V37H380V41.5H384.5V55H380V59.5H357.5ZM362 55H375.5V41.5H362V55ZM389 59.5V37H416V41.5H420.5V59.5H411.5V41.5H398V59.5H389ZM429.5 59.5V55H425V50.5H429.5V46H447.5V41.5H429.5V37H452V41.5H456.5V59.5H429.5ZM434 55H447.5V50.5H434V55ZM461 59.5V55H465.5V50.5H470V46H474.5V41.5H461V37H492.5V41.5H488V46H483.5V50.5H479V55H492.5V59.5H461ZM501.5 59.5V55H497V41.5H501.5V37H524V41.5H528.5V55H524V59.5H501.5ZM506 55H519.5V41.5H506V55Z"
+            fill="black"
+          />
+          <circle cx="45.5" cy="44.5" r="30.5" fill="#FC7A1E" />
+        </svg>
+      </h1>
+
+      <p class="header__tagline">
+        {{tagline}}
+      </p>
+    </header>
+    <main>
+      <section class="player">
+        <iframe
+          id="ytplayer"
+          type="text/html"
+          width="640"
+          height="360"
+          src="https://www.youtube.com/embed/{{songs[0].videoId}}"
+          frameborder="0"
+        ></iframe>
+        <div class="player__info">
+          <p id="title" class="title">{{songs[0].Title}}</p>
+          <div class="flex-row">
+            <p id="artist" class="artist">{{songs[0].Artist}}</p>
+            <p id="tags" class="tags">{{songs[0].Tags}}</p>
+          </div>
+          <hr class="line" />
+        </div>
+      </section>
+      <section class="list">
+        <h2 class="list__header">{{sectionTitle}}</h2>
+        <ul class="songs">
+          {% for song in songs %}
+          <li class="list__item">
+            <div
+              class="card js-song"
+              role="button"
+              aria-label="display"
+              data-videoid="{{song.videoId}}"
+            >
+              <div class="card__row">
+                <div class="img-container">
+                  <img
+                    class="card__img"
+                    src="{{song.thumbnail}}"
+                    alt="Video thumbnail"
+                  />
+                </div>
+                <div class="card__col">
+                  <p class="card__title title">{{ song.Title }}</p>
+                  <p class="card__artist artist">{{ song.Artist }}</p>
+                  <p class="card__tags tags">{{ song.Tags }}</p>
+                </div>
+              </div>
+              <div class="card__row card__row--bottom">
+                <div class="card__comment">
+                  <p class="secondary-label">Editor's review</p>
+                  <p>{{ song.Comment }}</p>
+                </div>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+      <footer class="footer center">
+        <p>
+          {{footerText}}
+          <a href="{{meta.authorSite}}">{{meta.author}}</a>
+        </p>
+      </footer>
+    </main>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

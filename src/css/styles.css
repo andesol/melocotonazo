@@ -1,0 +1,287 @@
+/* ===== Global ==== */
+@font-face {
+  font-family: "Montserrat";
+  src: url("../assets/fonts/montserrat.woff2") format("woff2"),
+    url("../assets/fonts/montserrat.woff") format("woof");
+}
+
+:root {
+  /* Colors */
+  --orange: #fc7a1e;
+  --yellow: #d1d646;
+  --card-clr: #edf2ef;
+  --grey: #6b6b6b;
+
+  /* Fonts */
+  --heading: Montserrat, Helvetica, Arial, sans-serif;
+  --text: Helvetica, Arial, sans-serif;
+
+  /* Typo */
+  --logo: 2.75rem;
+  --scale: 1.333;
+  --base: 1rem;
+  --size-l1: calc(var(--base) * var(--scale));
+  --size-l2: calc(var(--size-l1) * var(--scale));
+  --size-l3: calc(var(--size-l2) * var(--scale));
+  --size-l4: calc(var(--size-l3) * var(--scale));
+  --size-l5: calc(var(--size-l4) * var(--scale));
+  --size-s1: calc(var(--base) / var(--scale));
+
+  /* Decoration */
+  --shadow-1: 5px 5px 10px rgb(156, 156, 156);
+
+  /* Responsive */
+  --sm: 576px;
+  --md: 768px;
+  --lg: 992px;
+  --xl: 1200px;
+}
+
+/* ===== Base ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 1rem;
+  font-family: var(--text);
+  line-height: 1.5;
+}
+
+main {
+  max-width: 900px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  font-family: var(--heading);
+  font-size: var(--size-l2);
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+div[role="button"] {
+  cursor: pointer;
+}
+
+/*  ===== Header ===== */
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-shadow: 0px 5px 5px #b6b6b6;
+  margin: 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0;
+  padding-left: 2rem;
+  background-color: #d1d646;
+}
+
+.logo {
+  width: 23rem;
+}
+
+.logo path {
+  fill: #372248;
+}
+
+.header__tagline {
+  display: none;
+  font-size: var(--base);
+  margin-left: 2rem;
+}
+
+/*  ===== Player ===== */
+#ytplayer {
+  width: 100vw;
+  max-width: 640px;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 6rem;
+}
+
+.player__info {
+  padding: 0.75rem 2rem;
+}
+
+.player__info .artist {
+  margin-right: 2rem;
+}
+
+.player__info > * {
+  margin: 0.3rem;
+}
+
+/* ===== Song list ===== */
+
+.list {
+  padding-top: 2rem;
+}
+
+.list__header {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0rem 1rem;
+}
+
+.list__item {
+  margin-bottom: 2.5rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: var(--card-clr);
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: var(--shadow-1);
+}
+
+.card__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card__col {
+  min-width: 300px;
+  padding: 0.2rem 2rem;
+}
+
+.card__row--bottom {
+  padding: 0.2rem 2rem;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.img-container {
+  width: 220px;
+  height: 120px;
+}
+
+.card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card__title {
+  width: 100%;
+}
+
+.title {
+  font-size: var(--size-l1);
+  font-weight: bold;
+}
+
+.card__artist {
+  width: 100%;
+}
+
+.artist {
+  font-size: var(--size-l1);
+}
+
+.card__tags {
+  width: 100%;
+  margin-left: 1.5ex;
+}
+
+.tags {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.tags::before {
+  content: "#";
+  position: absolute;
+  top: 0;
+  left: -12px;
+}
+
+.card__comment {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 200px;
+}
+
+.card__comment > .secondary-label {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: var(--size-s1);
+  color: var(--grey);
+}
+
+/* ===== Footer ===== */
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  padding: 2rem;
+}
+
+/* ===== Utility ===== */
+.center {
+  margin: 0 auto;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.line {
+  background-color: var(--orange);
+  width: 100%;
+  height: 15px;
+  border: none;
+}
+
+/* ====== Media queries ===== */
+@media (min-width: 576px) {
+  .card {
+    flex-direction: row;
+  }
+
+  .card__col {
+    width: 55%;
+  }
+  .card__row--bottom {
+    width: auto;
+  }
+}
