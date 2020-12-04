@@ -34,8 +34,13 @@ module.exports = async function() {
 
   const youtubeResponse = await getJSON(apiYoutube);
 
+  /* Thumbnail size 
+  - default: 120x90
+  - medium: 320x180
+  - high: 480x360
+  - standard: 640x480 */
   const thumbnails = youtubeResponse.items.map(
-    video => video.snippet.thumbnails.default.url
+    video => video.snippet.thumbnails.medium.url
   );
 
   return songs.map((song, i) => {
