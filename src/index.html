@@ -9,7 +9,9 @@ sectionTitle: Últimos melocotonazos
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/all.css" />
+    <link rel="stylesheet" media='(min-width: 576px)' href="css/medium.css" />
+    <link rel="stylesheet" media='(min-width: 768px)' href="css/large.css" />
     <title>{{meta.title}}</title>
   </head>
   <body>
@@ -46,7 +48,7 @@ sectionTitle: Últimos melocotonazos
         <ul class="songs">
           {% for song in songs %}
           <li class="list__item">
-            <div
+            <article
               class="card js-song"
               role="button"
               aria-label="display"
@@ -68,9 +70,8 @@ sectionTitle: Últimos melocotonazos
                 <div class="card__comment">
                   <p class="secondary-label">Editor's review</p>
                   <p>{{ song.Comment }}</p>
-                </div>                
-
-            </div>
+                </div>
+            </article>
           </li>
           {% endfor %}
         </ul>

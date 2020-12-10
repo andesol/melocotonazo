@@ -260,31 +260,3 @@ div[role="button"] {
 .unselectable {
   user-select: none;
 }
-
-/* ====== Media queries ===== */
-@media (min-width: 576px) {
-  .card {
-    flex-direction: row;
-  }
-
-  .img-container {
-    width: 50%;
-  }
-}
-
-@media (min-width: 768px) {
-  .card__content {
-    display: flex;
-    align-items: flex-start;
-    flex: 1;
-  }
-
-  .img-container {
-    width: 33%;
-  }
-
-  .card__meta {
-    width: 50%;
-    min-width: 50%;
-  }
-}

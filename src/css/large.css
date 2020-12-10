@@ -1,0 +1,14 @@
+.card__content {
+  display: flex;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.img-container {
+  width: 33%;
+}
+
+.card__meta {
+  width: 50%;
+  min-width: 50%;
+}
