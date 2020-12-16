@@ -13,7 +13,6 @@ document.querySelectorAll(".js-song").forEach(node => {
 });
 
 function displayVideo(e) {
-  console.log(e.currentTarget.children[1].children[0].children[0].innerText);
   document.getElementById(
     "ytplayer"
   ).src = `https://www.youtube.com/embed/${e.currentTarget.dataset.videoid}`;

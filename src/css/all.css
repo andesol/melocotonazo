@@ -15,6 +15,7 @@
   /* Colors */
   --orange: #fc7a1e;
   --yellow: #d1d646;
+  --logo: #00082a;
   --card-clr: #edf2ef;
   --grey: #6b6b6b;
 
@@ -81,6 +82,7 @@ p {
   margin: 0;
 }
 
+ol,
 ul {
   margin: 0;
   padding: 0;
@@ -90,7 +92,24 @@ li {
   list-style: none;
 }
 
-div[role="button"] {
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  border-bottom: 3px solid orange;
+}
+
+footer a {
+  border-bottom: 3px solid orange;
+}
+
+span {
+  color: initial;
+}
+
+[role="button"] {
   cursor: pointer;
 }
 
@@ -109,12 +128,7 @@ div[role="button"] {
 
 .logo {
   font-family: var(--logo-font);
-}
-
-.header__tagline {
-  display: none;
-  font-size: var(--base);
-  margin-left: 2rem;
+  color: var(--logo);
 }
 
 /*  ===== Player ===== */
@@ -230,6 +244,29 @@ div[role="button"] {
   color: var(--grey);
 }
 
+.pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.pages__list {
+  display: flex;
+}
+
+.pages__list > * {
+  margin-right: 0.5rem;
+}
+
+.pages__link {
+  padding: 0.5rem 0.8rem;
+}
+
+.pages__link[aria-current] {
+  border: 3px solid var(--orange);
+}
+
 /* ===== Footer ===== */
 .footer {
   display: flex;
@@ -237,13 +274,10 @@ div[role="button"] {
   align-items: center;
   margin-top: auto;
   padding: 2rem;
+  background-color: var(--card-clr);
 }
 
 /* ===== Utility ===== */
-.center {
-  margin: 0 auto;
-}
-
 .flex-row {
   display: flex;
   flex-direction: row;

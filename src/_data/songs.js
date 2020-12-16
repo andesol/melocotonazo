@@ -7,6 +7,27 @@ async function getJSON(url) {
   return await response.json();
 }
 
+// function splitSongs(songs) {
+//   const currentMonth = new Date().getMonth() + 1;
+
+//   let featuredSongs = [];
+//   let pastSongs = [];
+
+//   songs.forEach(song => {
+//     const month = Number(song.Date.split("-")[1]);
+//     if (month === currentMonth) {
+//       featuredSongs.push(song);
+//     } else {
+//       pastSongs.push(song);
+//     }
+//   });
+
+//   return {
+//     featured: featuredSongs,
+//     past: pastSongs
+//   };
+// }
+
 module.exports = async function() {
   const apiAirtable = new URL(
     `https://api.airtable.com/v0/${process.env.AIRTABLE_USER_URL}/Main`
