@@ -3,45 +3,35 @@ const fetch = require("node-fetch");
 require("dotenv").config();
 
 async function getJSON(url) {
-  const response = await fetch(url);
-  return await response.json();
+  try {
+    const response = await fetch(url);
+    return await response.json();
+  } catch (err) {
+    console.log(err);
+  }
 }
-
-// function splitSongs(songs) {
-//   const currentMonth = new Date().getMonth() + 1;
-
-//   let featuredSongs = [];
-//   let pastSongs = [];
-
-//   songs.forEach(song => {
-//     const month = Number(song.Date.split("-")[1]);
-//     if (month === currentMonth) {
-//       featuredSongs.push(song);
-//     } else {
-//       pastSongs.push(song);
-//     }
-//   });
-
-//   return {
-//     featured: featuredSongs,
-//     past: pastSongs
-//   };
-// }
 
 module.exports = async function() {
   const apiAirtable = new URL(
     `https://api.airtable.com/v0/${process.env.AIRTABLE_USER_URL}/Main`
   );
+
   apiAirtable.searchParams.set("api_key", process.env.AIRTABLE_API_KEY);
 
   const songsResponse = await getJSON(apiAirtable);
 
-  const songs = songsResponse.records;
+  const removeEmpty = songs => {
+    return songs.filter(song => song.fields.Title != null);
+  };
+
+  const songs = removeEmpty(songsResponse.records);
 
   // Get video id from url
-  const videoIds = songs.map(song =>
-    song.fields.Link.split("watch?v=")[1].trim()
-  );
+  const videoIds = songs.map(song => {
+    if (song.fields.Title != null) {
+      return song.fields.Link.split("watch?v=")[1].trim();
+    }
+  });
 
   const apiYoutube = new URL(
     "https://youtube.googleapis.com/youtube/v3/videos"

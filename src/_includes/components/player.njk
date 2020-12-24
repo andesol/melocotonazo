@@ -1,0 +1,20 @@
+<section class="player">
+  <iframe
+    title="Youtube video for the first song of the page"
+    id="ytplayer"
+    type="text/html"
+    width="640"
+    height="360"
+    src="https://www.youtube.com/embed/{{pagination.items[0].videoId}}"
+    frameborder="0"
+    allowfullscreen
+  ></iframe>
+  <div class="player__info">
+    <p id="title" class="title">{{ pagination.items[0].Title }}</p>
+    <div class="flex-row">
+      <p id="artist" class="artist">{{ pagination.items[0].Artist }}</p>
+      <p id="tags" class="tags">{{pagination.items[0].Tags}}</p>
+    </div>
+    <hr class="line" />
+  </div>
+</section>

@@ -1,4 +1,6 @@
-/* ===== Global ==== */
+/* ============
+  Global
+=============== */
 @font-face {
   font-family: "Montserrat";
   src: url("../fonts/montserrat.woff2") format("woff2"),
@@ -40,7 +42,9 @@
   --shadow-2: 5px 5px 5px #b6b6b6;
 }
 
-/* ===== Base ===== */
+/* ============
+  Base
+=============== */
 * {
   box-sizing: border-box;
 }
@@ -98,11 +102,7 @@ a {
 }
 
 a:hover {
-  border-bottom: 3px solid orange;
-}
-
-footer a {
-  border-bottom: 3px solid orange;
+  border-bottom: 3px solid var(--orange);
 }
 
 span {
@@ -113,7 +113,11 @@ span {
   cursor: pointer;
 }
 
-/*  ===== Header ===== */
+/* ============
+  Layout
+=============== */
+
+/* Header */
 .header {
   display: flex;
   align-items: center;
@@ -131,18 +135,35 @@ span {
   color: var(--logo);
 }
 
-/*  ===== Player ===== */
-#ytplayer {
-  width: 100vw;
-  max-width: 640px;
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  padding: 2rem;
+  background-color: var(--card-clr);
 }
 
+.footer a {
+  border-bottom: 3px solid var(--orange);
+}
+
+/* ============
+  Components
+=============== */
+
+/* Player */
 .player {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   padding-top: 6rem;
+}
+
+#ytplayer {
+  width: 100vw;
+  max-width: 640px;
 }
 
 .player__info {
@@ -157,7 +178,20 @@ span {
   margin: 0.3rem;
 }
 
-/* ===== Song list ===== */
+.line {
+  background-color: var(--orange);
+  width: 100%;
+  height: 15px;
+  border: none;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+/* List */
+
 .list {
   padding-top: 2rem;
 }
@@ -172,6 +206,7 @@ span {
   margin-bottom: 2.5rem;
 }
 
+/* Card */
 .card {
   display: flex;
   flex-direction: column;
@@ -180,12 +215,11 @@ span {
   width: 100%;
   border-radius: 5px;
   box-shadow: var(--shadow-1);
-  animation: ease 2s;
+  transition: 0.2s;
 }
 
 .card:hover {
   transform: translateY(-4px);
-  transition: ease 0.7;
   box-shadow: 5px 5px 5px #b6b6b6;
 }
 
@@ -244,6 +278,7 @@ span {
   color: var(--grey);
 }
 
+/* Pagination */
 .pages {
   display: flex;
   justify-content: center;
@@ -255,41 +290,28 @@ span {
   display: flex;
 }
 
-.pages__list > * {
-  margin-right: 0.5rem;
+.pages__item {
+  display: grid;
+  place-items: center;
+  height: 3rem;
+  width: 3rem;
+  padding: 0.2rem;
+  text-align: center;
+  line-height: 2;
+  border: 3px solid transparent;
 }
 
-.pages__link {
-  padding: 0.5rem 0.8rem;
+.pages__item:hover {
+  border-bottom: 3px solid var(--orange);
 }
 
-.pages__link[aria-current] {
+.pages__item[aria-current] {
   border: 3px solid var(--orange);
 }
 
-/* ===== Footer ===== */
-.footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: auto;
-  padding: 2rem;
-  background-color: var(--card-clr);
-}
-
-/* ===== Utility ===== */
-.flex-row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.line {
-  background-color: var(--orange);
-  width: 100%;
-  height: 15px;
-  border: none;
-}
+/* ============
+  Utility
+=============== */
 
 .unselectable {
   user-select: none;

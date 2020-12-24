@@ -1,13 +1,13 @@
 {
   "name": "melocotonazo",
   "version": "1.0.0",
-  "description": "",
+  "description": "A list of musical hits",
   "main": "index.js",
   "scripts": {
     "dev": "eleventy --serve",
     "build": "eleventy"
   },
-  "author": "",
+  "author": "andesol",
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^0.11.1",

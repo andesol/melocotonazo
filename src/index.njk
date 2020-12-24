@@ -1,112 +1,50 @@
 ---
-footerText: Made with visible confussion by
-sectionTitle: Últimos melocotonazos
+layout: layout.njk
 
 pagination: 
   data: songs
-  size: 3
+  size: 10
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- CSS files -->
-    <link rel="stylesheet" href="/css/all.css" />
-    <link rel="stylesheet" media='(min-width: 576px)' href="/css/medium.css" />
-    <link rel="stylesheet" media='(min-width: 768px)' href="/css/large.css" />
-    <!-- JS to handle interactivity -->
-    <script defer src="/js/main.js"></script>
+{% include "components/player.njk" %}
+<section class="list">
+  {% if pagination.items[0].id == pagination.pages[0][0].id %}
 
-    <title>{{meta.title}}</title>
-  </head>
-  <body>
-    <header class="header">
-      <h1 class='logo unselectable'>
-        <a href="/">
-        <span>🍑</span>Melocotonazo 
-      </a>
-      </h1>
-    </header>
-    <main>
-      <section class="player">
-        <iframe
-          id="ytplayer"
-          type="text/html"
-          width="640"
-          height="360"
-          src="https://www.youtube.com/embed/{{pagination.items[0].videoId}}"
-          frameborder="0"
-        ></iframe>
-        <div class="player__info">
-          <p id="title" class="title">{{ pagination.items[0].Title }}</p>
-          <div class="flex-row">
-            <p id="artist" class="artist">{{ pagination.items[0].Artist }}</p>
-            <p id="tags" class="tags">{{pagination.items[0].Tags}}</p>
-          </div>
-          <hr class="line" />
+  <h2 class="list__header">
+    
+    {{ sectionTitle }}</h2>
+
+    {% endif %}
+  <ul class="songs">
+    {% for song in pagination.items %}
+    <li class="list__item">
+      <article
+        class="card js-song"
+        role="button"
+        aria-label="display"
+        data-videoid="{{song.videoId}}"
+      >
+        <div class="img-container">
+          <img
+            class="card__img"
+            src="{{song.thumbnail}}"
+            alt="Video thumbnail"
+          />
         </div>
-      </section>
-      <section class="list">
-        {% if pagination.items[0].id == pagination.pages[0][0].id %}
+        <div class="card__content">
+          <div class='card__meta'>
+            <p class="card__title title">{{ song.Title }}</p>
+            <p class="card__artist artist">{{ song.Artist }}</p>
+            <p class="card__tags tags">{{ song.Tags }}</p>
+          </div>
+          <div class="card__comment">
+            <p class="secondary-label">Editor's review</p>
+            <p>{{ song.Comment }}</p>
+          </div>
+      </article>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% include "components/pagination.njk" %}
 
-        <h2 class="list__header">
-          
-          {{ sectionTitle }}</h2>
-
-          {% endif %}
-        <ul class="songs">
-          {% for song in pagination.items %}
-          <li class="list__item">
-            <article
-              class="card js-song"
-              role="button"
-              aria-label="display"
-              data-videoid="{{song.videoId}}"
-            >
-              <div class="img-container">
-                <img
-                  class="card__img"
-                  src="{{song.thumbnail}}"
-                  alt="Video thumbnail"
-                />
-              </div>
-              <div class="card__content">
-                <div class='card__meta'>
-                  <p class="card__title title">{{ song.Title }}</p>
-                  <p class="card__artist artist">{{ song.Artist }}</p>
-                  <p class="card__tags tags">{{ song.Tags }}</p>
-                </div>
-                <div class="card__comment">
-                  <p class="secondary-label">Editor's review</p>
-                  <p>{{ song.Comment }}</p>
-                </div>
-            </article>
-          </li>
-          {% endfor %}
-        </ul>
-      </section>
-      <nav class='pages' aria-labelledby="pagination">
-        <a href={{pagination.href.previous}}>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>        
-      </a>
-        <ol class='pages__list'>  
-      {%- for pageEntry in pagination.pages %}          
-          <li ><a class='pages__link' href="{{ pagination.hrefs[ loop.index0 ] }}" {% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %}>{{ loop.index }}</a></li>
-      {%- endfor %}
-    </ol>
-    <a href={{pagination.href.next}}>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-    </a>
-      </nav>
-
-    </main>
-    <footer class="footer">
-      <p>
-        {{footerText}}
-        <a href="{{meta.authorSite}}">{{ meta.author }}</a>
-      </p>
-    </footer>
-  </body>
-</html>
